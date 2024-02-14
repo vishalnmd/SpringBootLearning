@@ -3,12 +3,17 @@ package com.springboot.rest.restapi.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.rest.restapi.Pojo.User;
 import com.springboot.rest.restapi.Service.MyUserService;
+
+import jakarta.websocket.server.PathParam;
 
 @RestController
 public class MyRestController {
@@ -21,7 +26,7 @@ public class MyRestController {
         return "This is my first rest API ";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/user")
     public List<User> getUser(){
        return service.getAllUsers();
     }
@@ -29,5 +34,17 @@ public class MyRestController {
     @GetMapping("/user/{id}")
     public User getUserById(@PathVariable("id") String id){
        return service.getUserById(id);
+    }
+
+    @PostMapping("/user")
+    public String addUser(@RequestBody User user){
+        service.addUser(user);
+        return "New User successfully added into the list";
+    }
+
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable("id") String id){
+        service.deleteUser(id);
+        return "User with id "+ id + "successfully deleted ";
     }
 }
