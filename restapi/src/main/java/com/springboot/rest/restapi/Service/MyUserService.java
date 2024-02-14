@@ -37,4 +37,16 @@ public class MyUserService {
         arr = arr.stream().filter(e->!e.getId().equals(id)).collect(Collectors.toList());
         System.out.println(id + "  " + arr);
     }
+
+    public void editUser(User user, String id){
+      arr = arr.stream().map(e->{
+            if(e.getId().equals(id)){
+                e.setName(user.getName());
+                e.setGender(user.getGender());
+            }
+            return e;
+        }).collect(Collectors.toList());
+
+        System.out.println(arr);
+    }
 }
