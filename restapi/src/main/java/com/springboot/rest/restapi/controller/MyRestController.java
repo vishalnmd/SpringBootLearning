@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.rest.restapi.Pojo.User;
 import com.springboot.rest.restapi.Service.MyUserService;
 
-import jakarta.websocket.server.PathParam;
-
 @RestController
 public class MyRestController {
     
