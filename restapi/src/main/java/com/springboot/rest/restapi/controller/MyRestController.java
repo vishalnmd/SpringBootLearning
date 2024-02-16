@@ -1,8 +1,11 @@
 package com.springboot.rest.restapi.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,30 +29,51 @@ public class MyRestController {
     }
 
     @GetMapping("/user")
-    public List<User> getUser(){
-       return service.getAllUsers();
+    public ResponseEntity<List<User>> getUser(){
+       List<User> li = service.getAllUsers();
+
+       if(li.size()<=0){
+          return ResponseEntity.status(HttpStatus.NOT_FOUND).build();          
+       }
+       else{
+        return new ResponseEntity<List<User>>(li, HttpStatus.OK);
+       }
     }
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable("id") String id){
-       return service.getUserById(id);
+    public ResponseEntity<User> getUserById(@PathVariable("id") String id){
+        Optional<User> user = service.getUserById(id);
+       if(!user.isEmpty()){
+        return new ResponseEntity<>(user.get(),HttpStatus.OK);
+       }
+       else{
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       }
     }
 
     @PostMapping("/user")
-    public String addUser(@RequestBody User user){
+    public ResponseEntity<String> addUser(@RequestBody User user){
         service.addUser(user);
-        return "New User successfully added into the list";
+        return new ResponseEntity<>("New User successfully added into the list",HttpStatus.CREATED);
     }
 
     @DeleteMapping("/user/{id}")
-    public String deleteUser(@PathVariable("id") String id){
-        service.deleteUser(id);
-        return "User with id "+ id + "successfully deleted ";
+    public ResponseEntity<String> deleteUser(@PathVariable("id") String id){
+       Boolean mode = service.deleteUser(id);
+
+       if(mode)
+        return new ResponseEntity<String>("User with id "+ id + "successfully deleted ", HttpStatus.ACCEPTED);
+       else{
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       } 
     }
 
     @PutMapping("/user/{id}")
-    public User editUser(@RequestBody User user, @PathVariable("id") String id){
-        service.editUser(user, id);
-        return user;
+    public ResponseEntity<User> editUser(@RequestBody User user, @PathVariable("id") String id){
+        Boolean val = service.editUser(user, id);
+        if(val)
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+        else
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
