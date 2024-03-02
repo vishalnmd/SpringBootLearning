@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<head>
+	<meta charset="UTF-8" />
+	<title>inheritance</title>	
+</head>
+<body style="background-color: #e2e2e2">
+	
+	<h1>Welcome to Thymeleaf Project</h1>
+	
+	<div th:replace="${content}">
+	</div>
+	
+	<footer style="background-color: #e2e2e2">
+	  	<h2 style="margin: 50">Thank you! for visiting this page.</h2>
+	</footer>
+	
+</body>
+</html>

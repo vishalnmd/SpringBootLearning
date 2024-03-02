@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<h1>My Demo Thymeleaf project called</h1>
+	
+	<h2 style="text-decoration: blink;"> my fav naruto character is <span th:text="${name}"></span></h2>
+	
+	<div th:with="a=18, b=27">
+		
+	  <p th:text=" 'sum of ' + ${a} + ' and ' + ${b} + ' is ' +  ${a+b}">
+		
+	</div>
+</body>
+</html>

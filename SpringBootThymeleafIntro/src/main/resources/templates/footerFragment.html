@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>fragments</title>
+</head>
+<body>
+	
+	<div class="insert" th:fragment="insert">
+		<p>this div is inserted into the host html </p>
+	</div>
+	
+	<div class="replace" th:fragment="replace">
+		<p>this div replaces the host's div</p>
+		
+	</div>
+	
+	<footer th:include="footer" style="align-content: flex-end;">
+		
+		<h1>This footer of fragment template is included in host template</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid laborum numquam voluptate perspiciatis quibusdam aliquam magnam consequatur quaerat delectus eveniet?</p>	
+	</footer>
+	
+</body>
+</html>

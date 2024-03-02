@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Fragments</title>
+</head>
+<body>
+	
+	<div th:insert="footerFragment::insert">		
+		<h1>This is host's Div Body</h1>
+	</div>
+	
+	<hr>
+	
+	<div th:replace="footerFragment::replace">
+		<h1>this should not be printed</h1>
+	</div>
+	
+	<hr>
+	
+	<footer th:include="footerFragment::footer">
+		<h1>not sure wheater it going to be printed or not</h1>
+	
+	</footer>
+	
+</body>
+</html>

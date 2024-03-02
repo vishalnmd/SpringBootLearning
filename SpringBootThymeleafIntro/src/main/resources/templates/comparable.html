@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Comparable</title>
+</head>
+<body>
+	<h1>This is thymeleaf comparable demo  API</h1>
+	
+	<h1 th:text="${isTrue}? 'true':'false'"></h1>
+	
+	<h2> <span th:if="${isTrue}">this is True case block</span> </h2>
+	
+	<h2> <span th:unless="${isTrue}">this is false case block</span> </h2>
+	
+	<div th:switch="${gender}">
+		<p th:case="'M'">Male</p>		
+		
+		<p th:case="'F'">Female</p>
+		
+		<p th:case="*">Other</p>
+		
+	</div>
+		
+</body>
+</html>
