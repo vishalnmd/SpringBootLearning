@@ -1,0 +1,35 @@
+2024-05-28 01:13:05 [http-nio-8080-exec-3] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - 2024-05-28T01:13:05.641+0530 : Root API hits.
+2024-05-28 01:13:37 [RMI TCP Connection(6)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-05-28 01:13:37 [RMI TCP Connection(6)-127.0.0.1] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:17 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - Starting SpringBootMvcBasicApplication using Java 17.0.10 with PID 24316 (E:\MyWorkSpace\SpringBoot\SpringBootLearning\SpringBootMvcBasic\target\classes started by ITACHI in E:\MyWorkSpace\SpringBoot\SpringBootLearning\SpringBootMvcBasic)
+2024-05-28 16:46:17 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-28 16:46:18 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-05-28 16:46:18 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:18 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-28 16:46:18 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-28 16:46:18 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-05-28 16:46:18 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-05-28 16:46:18 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1042 ms
+2024-05-28 16:46:18 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:18 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2024-05-28 16:46:18 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - Started SpringBootMvcBasicApplication in 2.02 seconds (process running for 3.166)
+2024-05-28 16:46:31 [RMI TCP Connection(2)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-05-28 16:46:31 [RMI TCP Connection(2)-127.0.0.1] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:42 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - Starting SpringBootMvcBasicApplication using Java 17.0.10 with PID 17588 (E:\MyWorkSpace\SpringBoot\SpringBootLearning\SpringBootMvcBasic\target\classes started by ITACHI in E:\MyWorkSpace\SpringBoot\SpringBootLearning\SpringBootMvcBasic)
+2024-05-28 16:46:42 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - No active profile set, falling back to 1 default profile: "default"
+2024-05-28 16:46:43 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-05-28 16:46:43 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:43 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2024-05-28 16:46:43 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.18]
+2024-05-28 16:46:44 [main] INFO  org.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2024-05-28 16:46:44 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-05-28 16:46:44 [main] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1120 ms
+2024-05-28 16:46:44 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-05-28 16:46:44 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2024-05-28 16:46:44 [main] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - Started SpringBootMvcBasicApplication in 2.033 seconds (process running for 2.839)
+2024-05-28 16:47:07 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-28 16:47:07 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-05-28 16:47:07 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2024-05-28 16:47:07 [http-nio-8080-exec-1] INFO  com.springBootMvcBasic.SpringBootMvcBasicApplication - 2024-05-28T16:47:07.341+0530 : Root API hits.
+2024-05-28 17:12:05 [RMI TCP Connection(27)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2024-05-28 17:12:05 [RMI TCP Connection(27)-127.0.0.1] INFO  org.apache.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
