@@ -16,6 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.springboot.login.jwt.AuthEntryPointJWT;
 import com.springboot.login.jwt.AuthTokenFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -35,16 +37,16 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-			.csrf().disable()
-			.formLogin().disable()
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
-			.authorizeRequests()
-			.requestMatchers("/h2-console/**").permitAll()
-			.requestMatchers("signin").permitAll()
-			.requestMatchers("loginUser").permitAll()
-			.anyRequest()
-			.authenticated();
+				.cors().and().csrf().disable()
+				.formLogin().disable()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+				.authorizeRequests()
+				.requestMatchers("/h2-console/**").permitAll()
+				.requestMatchers("signin").permitAll()
+				.requestMatchers("loginUser").permitAll()
+				.anyRequest()
+				.authenticated();
 		
 		http.headers().frameOptions().disable();
 		
@@ -72,6 +74,20 @@ public class SecurityConfig {
 	@Bean
 	AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception{
 		return builder.getAuthenticationManager();
+	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**") // Allow all API endpoints
+						.allowedOrigins("http://localhost:5173") // Allow frontend origin
+						.allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed methods
+						.allowedHeaders("*") // Allow all headers
+						.allowCredentials(true); // Allow cookies if needed
+			}
+		};
 	}
 
 }

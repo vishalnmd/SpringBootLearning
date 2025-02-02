@@ -3,8 +3,11 @@ package com.springboot.login.jwt;
 import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
+import jakarta.servlet.http.Cookie;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,11 +39,21 @@ public class JwtUtils {
 	
 	public String getJwtFromHeader(HttpServletRequest request) {
 		String bearerToken = request.getHeader("Authorization");
-		logger.debug("Authorization Token {}",bearerToken);		
-		
-		if(bearerToken!=null && bearerToken.startsWith("Bearer ")) {
+		logger.debug("Authorization Token {}",bearerToken);
+
+		if (bearerToken == null || !bearerToken.startsWith("Bearer ")) {
+			Optional<Cookie> cookieJwt = Arrays.stream(request.getCookies())
+					.filter(cookie -> "jwt".equals(cookie.getName())).findFirst();
+
+			if (cookieJwt.isPresent()) {
+				logger.info("Cookie from request : {}",cookieJwt.get().toString());
+				logger.info("Cookie get atrribute from request : {}",cookieJwt.get().getValue());
+				return cookieJwt.get().getValue();
+			}
+		} else {
 			return bearerToken.substring(7);
 		}
+
 		return null;
 	}
 	
