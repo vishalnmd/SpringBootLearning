@@ -2,7 +2,6 @@ package com.springboot.login.jwt;
 
 import java.security.Key;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Optional;
@@ -46,7 +45,6 @@ public class JwtUtils {
 					.filter(cookie -> "jwt".equals(cookie.getName())).findFirst();
 
 			if (cookieJwt.isPresent()) {
-				logger.info("Cookie from request : {}",cookieJwt.get().toString());
 				logger.info("Cookie get atrribute from request : {}",cookieJwt.get().getValue());
 				return cookieJwt.get().getValue();
 			}

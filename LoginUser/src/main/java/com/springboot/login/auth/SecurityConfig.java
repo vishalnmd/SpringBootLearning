@@ -16,8 +16,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.springboot.login.jwt.AuthEntryPointJWT;
 import com.springboot.login.jwt.AuthTokenFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -37,8 +42,9 @@ public class SecurityConfig {
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
-				.cors().and().csrf().disable()
-				.formLogin().disable()
+				.cors(cors->cors.configure(http))
+				.csrf(csrf->csrf.disable())
+				.formLogin(form->form.disable())
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeRequests()
@@ -47,9 +53,9 @@ public class SecurityConfig {
 				.requestMatchers("loginUser").permitAll()
 				.anyRequest()
 				.authenticated();
-		
+
 		http.headers().frameOptions().disable();
-		
+
 		http.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler));
 		
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);									
@@ -82,12 +88,14 @@ public class SecurityConfig {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**") // Allow all API endpoints
-						.allowedOrigins("http://localhost:5173") // Allow frontend origin
+						.allowedOrigins("http://localhost:5173","http://192.168.29.107:5173/") // Allow frontend origin
 						.allowedMethods("GET", "POST", "PUT", "DELETE") // Allowed methods
 						.allowedHeaders("*") // Allow all headers
 						.allowCredentials(true); // Allow cookies if needed
 			}
 		};
 	}
+
+
 
 }

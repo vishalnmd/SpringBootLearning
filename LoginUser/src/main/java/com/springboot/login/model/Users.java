@@ -1,9 +1,8 @@
 package com.springboot.login.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 public class Users {
@@ -16,7 +15,9 @@ public class Users {
 	private String email;
 	private String password;
 	private String role;
-	
+
+	//column will be make on some other table
+
 	public int getId() {
 		return id;
 	}
@@ -40,8 +41,7 @@ public class Users {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}	
-	
+	}
 	public String getRole() {
 		return role;
 	}
@@ -49,10 +49,15 @@ public class Users {
 		this.role = role;
 	}
 	
+
 	@Override
 	public String toString() {
-		return "Users [id=" + id + ", " + (name != null ? "name=" + name + ", " : "")
-				+ (email != null ? "email=" + email + ", " : "")
-				+ (password != null ? "password=" + password + ", " : "") + (role != null ? "role=" + role : "") + "]";
-	}		
+		return "Users{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", role='" + role + '\'' +
+				'}';
+	}
 }

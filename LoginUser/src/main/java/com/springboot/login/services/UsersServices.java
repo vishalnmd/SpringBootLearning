@@ -25,7 +25,6 @@ public class UsersServices {
 		List<Users> userLs = (List<Users>) repo.findAll();
 		
 		 Optional<Users> cpyUser = userLs.stream().filter(e->e.getEmail().equals(usr.getEmail())).findFirst();
-		
 		 if(cpyUser.isEmpty()) {
 			 
 			 BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();			
@@ -37,7 +36,15 @@ public class UsersServices {
 		 }else {
 			 return "email already exist";
 		 }
-			 
 	}
-	
+
+	public int getUserIdFromEmail(String email) {
+		Optional<Users> usr =  repo.findUsersByEmail(email);
+
+		if(usr.isPresent()){
+			return usr.get().getId();
+		}else{
+			return -1;
+		}
+	}
 }

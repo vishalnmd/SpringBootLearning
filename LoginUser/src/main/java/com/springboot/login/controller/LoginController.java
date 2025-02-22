@@ -51,7 +51,7 @@ public class LoginController {
 
     @PostMapping("/signin")
     public String addUser(@RequestBody Users usr) {
-
+        usr.setRole("user");
         return userService.insertUser(usr);
     }
 
@@ -82,7 +82,8 @@ public class LoginController {
         Cookie jwtCookie = new Cookie("jwt", jwtToken);
         jwtCookie.setHttpOnly(true);  // Secure, prevents JavaScript access
         jwtCookie.setSecure(false);   // Set to `true` if using HTTPS
-        jwtCookie.setPath("/");       // Available for all endpoints
+        jwtCookie.setPath("/");
+        jwtCookie.setAttribute("SameSite", "Lax"); // Allow cross-origin requests// Available for all endpoints
         jwtCookie.setMaxAge(60 * 60); // Expires in 1 hour
 
         // Add cookie to response
@@ -91,5 +92,4 @@ public class LoginController {
         return ResponseEntity.ok("Logged in successfully");
 
     }
-
 }
