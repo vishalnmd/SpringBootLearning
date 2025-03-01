@@ -16,7 +16,7 @@ public class Tasks {
     private Date createdDate;
     private Date updatedDate;
 
-    @OneToOne(targetEntity = Users.class)
+    @ManyToOne(targetEntity = Users.class)
     private Users user;
 
     public Integer getId() {

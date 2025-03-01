@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import com.springboot.login.dao.MyRepository;
 import com.springboot.login.model.Users;
 
+import javax.swing.text.html.Option;
+
 @Component
 public class UsersServices {
 
@@ -41,10 +43,17 @@ public class UsersServices {
 	public int getUserIdFromEmail(String email) {
 		Optional<Users> usr =  repo.findUsersByEmail(email);
 
-		if(usr.isPresent()){
-			return usr.get().getId();
-		}else{
-			return -1;
-		}
+        if (usr.isEmpty()) {
+            return -1;
+        } else {
+            return usr.get().getId();
+        }
+    }
+
+	public Optional<Users> getUserFromEmail(String email){
+
+		Optional<Users> usr = repo.findUsersByEmail(email);
+
+		return usr;
 	}
 }
