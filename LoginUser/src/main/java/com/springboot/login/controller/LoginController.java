@@ -26,7 +26,6 @@ import com.springboot.login.jwt.JwtUtils;
 import com.springboot.login.model.Users;
 import com.springboot.login.services.UsersServices;
 
-    
 @RestController
 public class LoginController {
 
@@ -41,20 +40,17 @@ public class LoginController {
     @Autowired
     private JwtUtils jwtUtils;
 
-
     @GetMapping("/getusers")
     public ResponseEntity<List<Users>> getUsers() {
 
         return new ResponseEntity<List<Users>>(userService.getAllUser(), HttpStatus.OK);
     }
 
-
     @PostMapping("/signin")
     public String addUser(@RequestBody Users usr) {
         usr.setRole("user");
         return userService.insertUser(usr);
     }
-
 
     @PostMapping("/loginUser")
     public ResponseEntity<?> login(@RequestBody Users usr, HttpServletResponse response) {
@@ -74,7 +70,6 @@ public class LoginController {
 
             return new ResponseEntity<Object>(map, HttpStatus.NOT_FOUND);
         }
-
         SecurityContextHolder.getContext().setAuthentication(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String jwtToken = jwtUtils.generateTokenFromUsername(userDetails);
@@ -85,11 +80,14 @@ public class LoginController {
         jwtCookie.setPath("/");
         jwtCookie.setAttribute("SameSite", "Lax"); // Allow cross-origin requests// Available for all endpoints
         jwtCookie.setMaxAge(60 * 60); // Expires in 1 hour
-
         // Add cookie to response
         response.addCookie(jwtCookie);
 
         return ResponseEntity.ok("Logged in successfully");
+    }
 
+    @GetMapping("/validateJwt")
+    public ResponseEntity<String> validateJwtToken(){
+        return ResponseEntity.ok("jwt validated");
     }
 }
