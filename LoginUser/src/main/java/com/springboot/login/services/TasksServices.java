@@ -6,7 +6,6 @@ import com.springboot.login.stub.FetchTaskResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -42,10 +41,18 @@ public class TasksServices {
     public String tasksCompletedByUsername(String email,int id){
         int result = repo.tasksCompletedByUsername(email,id);
 
-        if(result == 1){
-            return "task completed";
-        }else{
-            return "something went wrong !";
-        }
+        return result == 1 ? "task completed" : "something went wrong !";
+    }
+
+    public String removeTaskByUsername(String email,int id){
+        int result = repo.removeTasksByUsername(email,id);
+
+        return result == 1 ? "removed task successfully" : "something went wrong";
+    }
+
+    public String updateTaskByUsername(String task,int id,String email){
+        int result = repo.updateTasksByUsername(task,id,email);
+
+        return result == 1 ? "task updated successfully" : "something went wrong!";
     }
 }
